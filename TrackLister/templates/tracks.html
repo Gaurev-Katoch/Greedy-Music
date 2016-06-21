@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% if track_list %}
+    <ul>
+    {% for track in track_list %}
+        <li><a href="/track/{{ track.id }}/">{{ track }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No tracks have been added. Please add tracks first.</p>
+{% endif %}
+</body>
+</html>
