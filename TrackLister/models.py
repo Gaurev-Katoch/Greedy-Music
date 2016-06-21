@@ -18,7 +18,7 @@ class Tracks(models.Model):
 
 
 class Genres(models.Model):
-    genre = models.CharField(max_length=50, blank=False, required=True)
+    genre = models.CharField(max_length=50, blank=False)
 
     def clean(self):
         from django.core.exceptions import ValidationError
