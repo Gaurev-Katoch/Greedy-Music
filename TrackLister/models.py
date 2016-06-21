@@ -5,7 +5,7 @@ from django.db import models
 
 
 class Tracks(models.Model):
-    track_name = models.CharField(max_length=100, blank=False, required=True)
+    track_name = models.CharField(max_length=100, blank=False)
     genre = models.CharField(max_length=50, null=True)
     artist = models.CharField(max_length=100, blank=True, default='')
     release_year = models.IntegerField(null=True)
