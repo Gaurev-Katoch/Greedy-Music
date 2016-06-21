@@ -17,6 +17,7 @@ from django.conf.urls import include, url
 from django.contrib import admin
 from TrackLister.views import tracks, genres
 
+admin.autodiscover()
 urlpatterns = [
     url(r'^tracks$', tracks, name='tracks'),
     url(r'^genres$', genres, name='genres'),

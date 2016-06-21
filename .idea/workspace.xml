@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="20bc3926-0392-4034-a54f-e7db0c2ebe93" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TrackLister/models.py" afterPath="$PROJECT_DIR$/TrackLister/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GreedyMusic/urls.py" afterPath="$PROJECT_DIR$/GreedyMusic/urls.py" />
     </list>
     <ignored path="GreedyMusic.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -34,11 +35,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TrackLister/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="182">
-              <caret line="7" column="61" selection-start-line="7" selection-start-column="61" selection-end-line="7" selection-end-column="61" />
+            <state relative-caret-position="520">
+              <caret line="20" column="55" selection-start-line="20" selection-start-column="55" selection-end-line="20" selection-end-column="55" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -46,11 +47,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="urls.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/GreedyMusic/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="325">
-              <caret line="13" column="44" selection-start-line="13" selection-start-column="44" selection-end-line="13" selection-end-column="44" />
+            <state relative-caret-position="416">
+              <caret line="19" column="20" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="20" />
               <folding>
                 <element signature="e#644#685#0" expanded="true" />
               </folding>
@@ -129,9 +130,9 @@
       <list>
         <option value="$PROJECT_DIR$/TrackLister/views.py" />
         <option value="$PROJECT_DIR$/TrackLister/urls.py" />
-        <option value="$PROJECT_DIR$/GreedyMusic/urls.py" />
         <option value="$PROJECT_DIR$/GreedyMusic/settings.py" />
         <option value="$PROJECT_DIR$/TrackLister/models.py" />
+        <option value="$PROJECT_DIR$/GreedyMusic/urls.py" />
       </list>
     </option>
   </component>
@@ -420,7 +421,21 @@
       <option name="project" value="LOCAL" />
       <updated>1466507475720</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Installed apps">
+      <created>1466507512101</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1466507512101</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Installed apps">
+      <created>1466507536411</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1466507536411</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -920,16 +935,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/GreedyMusic/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="13" column="44" selection-start-line="13" selection-start-column="44" selection-end-line="13" selection-end-column="44" />
-          <folding>
-            <element signature="e#644#685#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/TrackLister/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="52">
@@ -950,10 +955,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/TrackLister/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="7" column="61" selection-start-line="7" selection-start-column="61" selection-end-line="7" selection-end-column="61" />
+        <state relative-caret-position="520">
+          <caret line="20" column="55" selection-start-line="20" selection-start-column="55" selection-end-line="20" selection-end-column="55" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GreedyMusic/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="416">
+          <caret line="19" column="20" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="20" />
+          <folding>
+            <element signature="e#644#685#0" expanded="true" />
           </folding>
         </state>
       </provider>
