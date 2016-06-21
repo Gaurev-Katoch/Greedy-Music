@@ -6,10 +6,10 @@ from django.db import models
 
 class Tracks(models.Model):
     track_name = models.CharField(max_length=100, blank=False)
-    genre = models.CharField(max_length=50, null=True)
-    artist = models.CharField(max_length=100, blank=True, default='')
-    release_year = models.IntegerField(null=True)
-    rating = models.IntegerField(null=True)
+    genre = models.CharField(max_length=50, null=True, blank=True)
+    artist = models.CharField(max_length=100, blank=True)
+    release_year = models.IntegerField(null=True, blank=True)
+    rating = models.PositiveIntegerField(null=True, blank=True)
 
     def clean(self):
         from django.core.exceptions import ValidationError
