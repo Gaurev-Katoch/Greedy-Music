@@ -2,15 +2,25 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Tracks</title>
 </head>
 <body>
+<h3 align="center">Tracks List</h3>
 {% if track_list %}
-    <ul>
+<table border="1" style="width:75%" >
+    <tr>
+        <th align="center">Name</th>
+        <th align="center">Genre</th>
+        <th align="center">Rating</th>
+    </tr>
     {% for track in track_list %}
-        <li><a href="/track/{{ track.id }}/">{{ track }}</a></li>
+    <tr>
+        <td style = "text-align: center"><a href="{% url 'detail' track.id %}"><font color="black">{{ track.track_name }}</font></a></td>
+        <td style = "text-align: center">{{ track.genre }}</td>
+        <td style = "text-align: center">{{ track.rating }}</td>
+    </tr>
     {% endfor %}
-    </ul>
+</table>
 {% else %}
     <p>No tracks have been added. Please add tracks first.</p>
 {% endif %}

@@ -9,7 +9,7 @@ class Tracks(models.Model):
     track_name = models.CharField(max_length=100, blank=False)
     genre = models.CharField(max_length=50, null=True, blank=True)
     artist = models.CharField(max_length=100, blank=True)
-    ablum = models.CharField(max_length=100, blank=True)
+    album = models.CharField(max_length=100, blank=True)
     release_year = models.PositiveIntegerField(null=True, blank=True)
     rating = models.PositiveIntegerField(null=True, blank=True)
 
@@ -20,6 +20,17 @@ class Tracks(models.Model):
         elif self.release_year > date.today().year:
             raise ValidationError('Release year cannot be after current year')
 
+    def __str__(self):
+        return "%s  %s  %s  %s" % (
+            self.track_name,
+            self.artist,
+            self.ablum,
+            self.genre,
+        )
+
 
 class Genres(models.Model):
     genre = models.CharField(max_length=50, blank=False)
+
+    def __str__(self):
+        return "%s" % self.genre

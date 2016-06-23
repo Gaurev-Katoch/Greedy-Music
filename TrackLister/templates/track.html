@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% if track %}
+<h3>Details for {{ track.track_name }}</h3>
+    <table style="width:75%" >
+    <tr>
+        <th align="center">Name</th>
+        <th align="center">Artist</th>
+        <th align="center">Album</th>
+        <th align="center">Year</th>
+        <th align="center">Genre</th>
+        <th align="center">Rating</th>
+    </tr>
+    <tr>
+        <td style = "text-align: center">{{ track.track_name }}</td>
+        <td style = "text-align: center">{{ track.artist }}</td>
+        <td style = "text-align: center">{{ track.album }}</td>
+        <td style = "text-align: center">{{ track.release_year }}</td>
+        <td style = "text-align: center">{{ track.genre }}</td>
+        <td style = "text-align: center">{{ track.rating }}</td>
+    </tr>
+    </table>
+{% else %}
+    <p>Track not found.</p>
+{% endif %}
+</body>
+</html>
