@@ -29,8 +29,8 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
 
     # api views
-    url(r'^api/list_tracks/$', ListTracks.as_view(), name='tracks_list'),
-    url(r'^api/mod_track/(?P<pk>\w+)/$', ModifyTracks.as_view(), name='track_detail'),
-    url(r'^api/list_genres/$', ListGenres.as_view(), name='genres_list'),
-    url(r'^api/mod_genre/(?P<pk>\w+)/$', ModifyGenres.as_view(), name='genre_detail'),
+    url(r'^api/list-tracks/$', ListTracks.as_view(), name='tracks_list'),
+    url(r'^api/mod-track/(?P<pk>\w+)/$', ModifyTracks.as_view(), name='track_detail'),
+    url(r'^api/list-genres/$', ListGenres.as_view(), name='genres_list'),
+    url(r'^api/mod-genre/(?P<pk>\w+)/$', ModifyGenres.as_view(), name='genre_detail'),
 ]

@@ -5,28 +5,44 @@
     <title>Title</title>
 </head>
 <body>
-{% if track %}
-<h3>Details for {{ track.track_name }}</h3>
-    <table style="width:75%" >
-    <tr>
-        <th align="center">Name</th>
-        <th align="center">Artist</th>
-        <th align="center">Album</th>
-        <th align="center">Year</th>
-        <th align="center">Genre</th>
-        <th align="center">Rating</th>
-    </tr>
-    <tr>
-        <td style = "text-align: center">{{ track.track_name }}</td>
-        <td style = "text-align: center">{{ track.artist }}</td>
-        <td style = "text-align: center">{{ track.album }}</td>
-        <td style = "text-align: center">{{ track.release_year }}</td>
-        <td style = "text-align: center">{{ track.genre }}</td>
-        <td style = "text-align: center">{{ track.rating }}</td>
-    </tr>
+{% if form %}
+    {% if form.track_name %}
+        <h3>Details for {{ form.track_name.value }}</h3>
+    {% else %}
+        <h3>Create New Track</h3>
+    {% endif %}
+    <form action="{% url 'detail' id %}" method="post">{% csrf_token %}
+    <table>
+    {{ form.as_table }}
     </table>
+    <input type="submit" value="Save">
+    </form>
 {% else %}
     <p>Track not found.</p>
 {% endif %}
 </body>
 </html>
+     <!--Track name: <input type="text" value="{{ form.track_name }}" name="track_name"><br>-->
+     <!--Artist: <input type="text" value="{{ form.artist }}" name="artist"><br>-->
+     <!--Album: <input type="text" value="{{ form.track_album }}" name="track_album"><br>-->
+     <!--Release Year: <input type="text" value="{{ form.release_year }}" name="release_year"><br>-->
+     <!--Genre: <input type="text" value="{{ form.genre }}" name="genre"><br>-->
+     <!--Rating: <input type="text" value="{{ form.rating }}" name="rating"><br>-->
+    <!--<table style="width:75%" >-->
+    <!--<tr>-->
+        <!--<th align="center">Name</th>-->
+        <!--<th align="center">Artist</th>-->
+        <!--<th align="center">Album</th>-->
+        <!--<th align="center">Year</th>-->
+        <!--<th align="center">Genre</th>-->
+        <!--<th align="center">Rating</th>-->
+    <!--</tr>-->
+    <!--<tr>-->
+        <!--<td style = "text-align: center">{{ track.track_name }}</td>-->
+        <!--<td style = "text-align: center">{{ track.artist }}</td>-->
+        <!--<td style = "text-align: center">{{ track.album }}</td>-->
+        <!--<td style = "text-align: center">{{ track.release_year }}</td>-->
+        <!--<td style = "text-align: center">{{ track.genre }}</td>-->
+        <!--<td style = "text-align: center">{{ track.rating }}</td>-->
+    <!--</tr>-->
+    <!--</table>-->
