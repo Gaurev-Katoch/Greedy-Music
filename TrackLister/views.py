@@ -14,7 +14,7 @@ def tracks(request):
     """
     pg = int(request.GET.get('page', 1))
     track_list = Tracks.objects.all()
-    p = Paginator(track_list, 15)
+    p = Paginator(track_list, 10)
     if pg > p.num_pages:
         pg = p.num_pages
     obj_list = p.page(pg).object_list
@@ -122,7 +122,10 @@ def genre_detail(request, pk):
                 except:
                     pk = 0
             else:
-                Genres.objects.filter(id=pk).update(**update_dict)
+                try:
+                    Genres.objects.filter(id=pk).update(**update_dict)
+                except:
+                    pass
         return redirect('genre_detail', pk=pk)
 
     return render(request, template, context)
