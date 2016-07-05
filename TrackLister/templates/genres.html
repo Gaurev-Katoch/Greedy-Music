@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Genres</title>
+</head>
+<body>
+<h3 align="center">Genre List</h3>
+<div style="width: 90%; margin-left: 30%; margin-top:1%; margin-bottom:1%; display: inline-block;">
+        <h4 style="display:inline">Search Tracks:</h4>
+        <form action="{% url 'search' %}" method="get" style="display:inline">
+        <input maxlength="100" name="lookup" type="text" style="width:20%"/>
+        <select name="search_by">
+            <option value="track_name" selected="selected">Track Name</option>
+            <option value="genres">Genres</option>
+            <option value="artist">Artist</option>
+        </select>
+         <input type="submit" value="Search">
+        </form>
+</div>
+{% if genre_list %}
+<table border="1" style="width:90%; margin:auto;" align="center">
+    <tr style="width:100%; margin:auto; margin-top:1%; margin-bottom:1%;">
+        {% for genre in genre_list %}
+            <td style = "width: 10%; margin: auto; text-align: center; margin-top:1%; margin-bottom:1%;"><a href="{% url 'genre_detail' genre.id %}">{{ genre.genre }}</a></td>
+            {% if forloop.counter|divisibleby:"10" %}
+            </tr>
+            {% endif %}
+        {% endfor %}
+</table>
+<p style="width: 25%; margin: auto;">(Click on a Genre to View its details)</p>
+<div style="width: 25%; margin-left: 40%; margin-top:1%; display: inline-block;">
+<form action="{% url 'home' %}" method="get" style="display: inline;">
+    <input type="submit" value="Home">
+</form>
+<form action="{% url 'genre_detail' 0 %}" method="get" style="display: inline;">
+    <input type="submit" value="Add New Genre" >
+</form>
+<form action="{% url 'tracks'%}" style="display:inline">
+    <input type="submit" value="View Tracks">
+</form>
+</div>
+{% else %}
+    <p>No genres have been added. Please add genres first.</p>
+    <form action="{% url 'genre_detail' 0 %}" method="get" style="display:inline">
+    <input type="submit" value="Add New Genre">
+    </form>
+{% endif %}
+</body>
+</html>

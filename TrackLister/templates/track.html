@@ -2,47 +2,65 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    {% if id == 0 %}
+        <title>New Track</title>
+    {% else %}
+        <title>Track {{ id }}</title>
+    {% endif %}
 </head>
 <body>
-{% if form %}
-    {% if form.track_name %}
-        <h3>Details for {{ form.track_name.value }}</h3>
+{% if form.track_name.value or id == '0' %}
+    {% if form.track_name.value %}
+        <h2 style="width:40%; margin:auto; margin-top:1%; margin-bottom:1%; text-align:center;">{{ form.track_name.value }}</h2>
     {% else %}
-        <h3>Create New Track</h3>
+        <h2 style="width:20%; margin:auto; margin-top:1%; margin-bottom:1%; text-align:center;">Add New Track</h2>
     {% endif %}
-    <form action="{% url 'detail' id %}" method="post">{% csrf_token %}
-    <table>
-    {{ form.as_table }}
-    </table>
-    <input type="submit" value="Save">
+<div>
+    <form action="{% url 'track_detail' id %}" method="post" style="width: 100%; margin: auto;">{% csrf_token %}
+        <table align="center">
+            {{ form.as_table }}
+        </table>
+        <h3 style="width:10%; margin:auto; margin-top:1%; margin-bottom:1%;"><big>Genres</big></h3>
+        <table style="width:80%; margin:auto;">
+            <!--<tr style="width:100%;margin:auto; text-align: center;"><big>Genres</big></tr>-->
+            <tr>
+            {% for genre in genre_list %}
+                <td style="width:20%; text-align:left; margin:auto; margin-top:1%; margin-bottom:1%;">
+                {% if genre in selected_genres %}
+                    <input type="checkbox" value="{{genre.id}}"  name="genres" checked style="width:10%; text-align:left; margin:auto; margin-top:1%; margin-bottom:1%;"/> {{genre.genre}}
+                {% else %}
+                    <input type="checkbox" value="{{genre.id}}"  name="genres" style="width:10%; margin:auto; margin-top:1%; margin-bottom:1%;"/> {{genre.genre}}
+            {% endif %}
+                </td>
+                {% if forloop.counter|divisibleby:"5" %}
+                </tr>
+                {% endif %}
+            {% endfor %}
+        </table>
+        <input type="submit" value="Save" style="margin-left: 48%; margin-top: 1%; float:center;">
     </form>
+    <div style="width: 40%; margin-left: 35%; margin-top:1%; display: inline-block;">
+    <form action="{% url 'home' %}" method="get" style="display: inline;">
+    <input type="submit" value="Home">
+    </form>
+    <form action="{% url 'tracks'%}" method="get" style="display:inline">
+    <input type="submit" value="Back to Tracks">
+    </form>
+    <form action="{% url 'track_detail' 0 %}" method="get" style="display:inline">
+        <input type="submit" value="Add New Track">
+    </form>
+    <form action="{% url 'track_detail' id %}" method="post" style="display:inline">{% csrf_token %}
+        <input type="hidden" name="Delete" value="True">
+        <input type="submit" value="Delete Track">
+    </form>
+    </div>
+</div>
 {% else %}
     <p>Track not found.</p>
+<form action="{% url 'tracks'%}">
+    <input type="submit" value="Back to Tracks">
+</form>
 {% endif %}
+
 </body>
 </html>
-     <!--Track name: <input type="text" value="{{ form.track_name }}" name="track_name"><br>-->
-     <!--Artist: <input type="text" value="{{ form.artist }}" name="artist"><br>-->
-     <!--Album: <input type="text" value="{{ form.track_album }}" name="track_album"><br>-->
-     <!--Release Year: <input type="text" value="{{ form.release_year }}" name="release_year"><br>-->
-     <!--Genre: <input type="text" value="{{ form.genre }}" name="genre"><br>-->
-     <!--Rating: <input type="text" value="{{ form.rating }}" name="rating"><br>-->
-    <!--<table style="width:75%" >-->
-    <!--<tr>-->
-        <!--<th align="center">Name</th>-->
-        <!--<th align="center">Artist</th>-->
-        <!--<th align="center">Album</th>-->
-        <!--<th align="center">Year</th>-->
-        <!--<th align="center">Genre</th>-->
-        <!--<th align="center">Rating</th>-->
-    <!--</tr>-->
-    <!--<tr>-->
-        <!--<td style = "text-align: center">{{ track.track_name }}</td>-->
-        <!--<td style = "text-align: center">{{ track.artist }}</td>-->
-        <!--<td style = "text-align: center">{{ track.album }}</td>-->
-        <!--<td style = "text-align: center">{{ track.release_year }}</td>-->
-        <!--<td style = "text-align: center">{{ track.genre }}</td>-->
-        <!--<td style = "text-align: center">{{ track.rating }}</td>-->
-    <!--</tr>-->
-    <!--</table>-->

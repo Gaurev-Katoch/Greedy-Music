@@ -15,22 +15,20 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
-from TrackLister.views import tracks, genres, track_detail
-from TrackLister.apis import ListTracks, ModifyTracks, ListGenres, ModifyGenres
+
+from GreedyMusic.views import home
+from TrackLister.views import tracks, genres, track_detail, genre_detail, search
 
 app_name = 'tracks'
 admin.autodiscover()
 
 urlpatterns = [
     # page views
+    url(r'^$', home, name='home'),
+    url(r'^search/$', search, name='search'),
     url(r'^tracks/$', tracks, name='tracks'),
     url(r'^genres/$', genres, name='genres'),
-    url(r'^track/(?P<pk>\w+)/$', track_detail, name='detail'),
+    url(r'^track/(?P<pk>\w+)/$', track_detail, name='track_detail'),
+    url(r'^genre/(?P<pk>\w+)/$', genre_detail, name='genre_detail'),
     url(r'^admin/', admin.site.urls),
-
-    # api views
-    url(r'^api/list-tracks/$', ListTracks.as_view(), name='tracks_list'),
-    url(r'^api/mod-track/(?P<pk>\w+)/$', ModifyTracks.as_view(), name='track_detail'),
-    url(r'^api/list-genres/$', ListGenres.as_view(), name='genres_list'),
-    url(r'^api/mod-genre/(?P<pk>\w+)/$', ModifyGenres.as_view(), name='genre_detail'),
 ]

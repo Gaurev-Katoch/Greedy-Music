@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% if id == '0' %}
+        <title>New Genre</title>
+    {% else %}
+        <title>Genre {{ id }}</title>
+    {% endif %}
+</head>
+<body>
+{% if genre or id == '0' %}
+    {% if genre.genre %}
+        <h2 align="center" style="width:20%; margin:auto; margin-top:1%; margin-bottom:1%;">{{ genre.genre }}</h2>
+    {% else %}
+        <h2 align="center" style="width:20%; margin:auto; margin-top:1%; margin-bottom:1%;">Add New Genre</h2>
+    {% endif %}
+    <form action="{% url 'genre_detail' id %}" method="post">{% csrf_token %}
+        <p style="width: 20%; margin:auto;"><label for="id_genre"><big><b>Genre:</b></big></label><input id="id_genre" maxlength="100" name="genre" type="text" value="{{ genre.genre }}" /></p>
+        <p style="width: 45%; margin:auto;"><big><b>Artists:</b></big>
+            {% if id != '0' %}
+            {% for artist in artists%}
+                {% if forloop.last %}
+                {{ artist }}
+                {% else %}
+                {{artist}},
+                {% endif %}
+                {% endfor %}
+        {% endif %}</p>
+        <input type="submit" value="Save" style="width: 10%; margin-left: 45%; margin-top: 1%;">
+    </form>
+    <div style="width: 40%; margin: 38%; margin-top:1%; display: inline-block;">
+    <form action="{% url 'home' %}" method="get" style="display: inline;">
+    <input type="submit" value="Home">
+    </form>
+    <form action="{% url 'genres'%}" style="display:inline">
+    <input type="submit" value="Back to Genres">
+    </form>
+    <form action="{% url 'genre_detail' 0 %}" method="get" style="display:inline">
+        <input type="submit" value="Add New Genre">
+    </form>
+    <form action="{% url 'genre_detail' id %}" method="post" style="display:inline">{% csrf_token %}
+        <input type="hidden" name="Delete" value="True">
+        <input type="submit" value="Delete Genre">
+    </form>
+    </div>
+{% else %}
+<p>Genre not found.</p>
+<form action="{% url 'genres'%}" style="display:inline">
+    <input type="submit" value="Back to Genres">
+    </form>
+{% endif %}
+</body>
+</html>
