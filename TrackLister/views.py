@@ -66,14 +66,14 @@ def track_detail(request, pk):
             form = TrackForm(f)
         except:
             form = TrackForm()
-            id = 0
+            id = pk
 
     try:
         gen_list = Tracks.objects.get(id=pk).genres.all()
     except:
         gen_list = {}
     # print form
-    context = {'form': form, 'id': id, 'genre_list': Genres.objects.all(), 'selected_genres': gen_list, }
+    context = {'form': form, 'id': str(id), 'genre_list': Genres.objects.all(), 'selected_genres': gen_list, }
     return render(request, template, context)
 
 
